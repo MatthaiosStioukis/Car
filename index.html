@@ -14,14 +14,14 @@
         <script>
             window.onload = function() {
 
-               function Car(make, model, year, color, passenger, convertible, mileage) {
-                    this.make = make;
-                    this.model = model;
-                    this.year = year;
-                    this.color = color;
-                    this.passenger = passenger;
-                    this.convertible = convertible;
-                    this.mileage = mileage;
+               function Car(params) {
+                    this.make = params.make;
+                    this.model = params.model;
+                    this.year = params.year;
+                    this.color = params.color;
+                    this.passenger = params.passenger;
+                    this.convertible = params.convertible;
+                    this.mileage = params.mileage;
                     this.started = false;
                     this.start = function() {
                         this.started = true;
@@ -31,18 +31,68 @@
                     };
                     this.drive = function() {
                         if (this.started) {
-                            alert("Broom broom rrrr");
+                            console.log("Broom broom rrrr");
                         } else { 
-                            alert("You have to start the engine first.");
+                            console.log("You have to start the engine first.");
                         }
                     };
                }
 
-               var chevy = new Car("Chevy", "Bel Air", 1957, "red", 2, false, 1021);
-               var cadi = new Car("GM", "Cadillac", 1955, "tan", 5, false, 12892);
-               var taxi = new Car("Webville Motors", "Taxi", 1955, "yellow", 4, false, 281341);
-               var fiat = new Car("Fiat", "500", 1957, "Medium Blue", 2, false, 88000);
-               var testCar = new Car("Webville Motors", "Test Car", 2014, "marine", 2, true, 21);
+               var chevyParams = {
+                make: "Chevy",
+                model: "Bel Air", 
+                year: 1957,
+                color: "red", 
+                passenger: 2, 
+                convertible: false,
+                mileage: 1021
+               };
+               
+               var cadiParams = { 
+                make: "GM", 
+                model: "Cadillac",
+                year: 1955,
+                color: "tan", 
+                passenger: 5,
+                convertible: false, 
+                mileage: 12892
+               };
+
+               var taxiParams = {
+                make: "Webville Motors",
+                model: "Taxi",
+                year: 1955,
+                color: "yellow",
+                passenger: 4,
+                convertible: false,
+                mileage: 281341
+               };
+
+               var fiatParams = {
+                make: "Fiat",
+                model: "500",
+                year: 1957,
+                color: "Medium Blue",
+                passenger: 2,
+                convertible: false,
+                mileage: 88000
+               };
+               
+               var testCarParams = { 
+                make: "Webville Motors",
+                model: "Test Car",
+                year: 2014,
+                color: "marine",
+                passenger: 2,
+                convertible: true,
+                mileage: 21
+               };
+               
+               var chevy = new Car(chevyParams);
+               var cadi = new Car(cadiParams);
+               var taxi = new Car(taxiParams);
+               var fiat = new Car(fiatParams);
+               var testCar = new Car(testCarParams);
 
                var cars = [chevy, cadi, taxi, fiat, testCar];
 
@@ -51,6 +101,7 @@
                 cars[i].drive();
                 cars[i].drive();
                 cars[i].stop();
+                console.log(typeof cars[i]);
                }
                
             };
